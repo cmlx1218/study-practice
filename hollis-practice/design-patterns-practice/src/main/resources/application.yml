@@ -1,0 +1,6 @@
+server:
+  port: 6200
+
+spring:
+  application:
+    name: design-patterns-practice
