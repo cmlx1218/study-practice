@@ -29,6 +29,8 @@ public class ThreadPkTest {
         int i = rs | wc;
         System.out.println(i); //-1
 
+
+        System.out.println(System.nanoTime());
         //计算-1的二进制（计算机中服务要以其正值得补码形式表示）
         //00000000 00000000 00000000 00000001    原码：一个整数，按照绝对值大小转换成的二进制
         //11111111 11111111 11111111 11111110    反码：将二进制按位取反

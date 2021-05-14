@@ -4,3 +4,8 @@ server:
 spring:
   application:
     name: thread-practice
+
+  # 引入配置文件
+  profiles:
+    active: log,cleanLog,quartz
+
