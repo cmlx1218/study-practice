@@ -1,5 +1,6 @@
 package com.cmlx.thread.logtest.listener;
 
+import com.cmlx.thread.logtest.logclean.CleanManager;
 import com.cmlx.thread.logtest.logpool.LogPoolManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class InitServletContextListener implements ServletContextListener {
 
     @Autowired
     private LogPoolManager logPoolManager;
+    @Autowired
+    private CleanManager cleanManager;
 
 
     @Override
@@ -26,5 +29,12 @@ public class InitServletContextListener implements ServletContextListener {
         // 日志 异步线程池处理 启动
         logPoolManager.init();
         log.info("日志异步池化处理启动成功!!!");
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        // 关闭线程池
+        logPoolManager.shutdown();
+        cleanManager.shutdown();
     }
 }

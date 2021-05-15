@@ -1,6 +1,7 @@
 package com.cmlx.thread.logtest.service;
 
-import com.cmlx.thread.logtest.bean.TestLogBean;
+
+import com.cmlx.thread.logtest.persist.entity.LogBean;
 
 import java.util.List;
 
@@ -16,6 +17,6 @@ public interface ITestLogService {
      *
      * @param list
      */
-    void batchInsert(List<TestLogBean> list);
+    void batchInsert(List<LogBean> list);
 
 }

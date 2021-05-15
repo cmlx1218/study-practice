@@ -1,6 +1,6 @@
 package com.cmlx.thread.logtest.logpool;
 
-import com.cmlx.thread.logtest.bean.TestLogBean;
+import com.cmlx.thread.logtest.persist.entity.LogBean;
 import com.cmlx.thread.logtest.service.ITestLogService;
 
 import java.util.List;
@@ -14,9 +14,9 @@ public class InsertThread implements Runnable{
 
     private ITestLogService iTestLogService;
 
-    private List<TestLogBean> list;
+    private List<LogBean> list;
 
-    public InsertThread(ITestLogService iTestLogService,List<TestLogBean> list) {
+    public InsertThread(ITestLogService iTestLogService,List<LogBean> list) {
         this.iTestLogService = iTestLogService;
         this.list = list;
     }

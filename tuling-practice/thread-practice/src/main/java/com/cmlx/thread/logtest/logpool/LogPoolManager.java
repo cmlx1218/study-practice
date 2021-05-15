@@ -1,6 +1,6 @@
 package com.cmlx.thread.logtest.logpool;
 
-import com.cmlx.thread.logtest.bean.TestLogBean;
+import com.cmlx.thread.logtest.persist.entity.LogBean;
 import com.cmlx.thread.logtest.service.ITestLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +62,7 @@ public class LogPoolManager {
     /**
      * 任务队列，存放日志内容
      */
-    private BlockingQueue<TestLogBean> queue;
+    private BlockingQueue<LogBean> queue;
 
     /**
      * Boolean 原子变量类
@@ -104,7 +104,7 @@ public class LogPoolManager {
                         if (logCount.get() > 0) {
                             log.info("begin drain log queue to database...");
 
-                            List<TestLogBean> list = new ArrayList<>();
+                            List<LogBean> list = new ArrayList<>();
                             /**
                              * drainTo(): 一次性从BlockingQueue获取所有可用的数据对象(还可以指定获取数据的个数)
                              * 通过该方法，可以提升获取数据效率，不在需要多次分批枷锁或释放锁
@@ -131,16 +131,16 @@ public class LogPoolManager {
     /**
      * 把日志放到队列中
      *
-     * @param testLogBean
+     * @param LogBean
      * @throws Exception
      */
-    public void addLog(TestLogBean testLogBean) throws Exception {
+    public void addLog(LogBean LogBean) throws Exception {
         if (logCount.get() >= MAX_QUEUE_SIZE) {
             // 当队列满时，直接将日志丢弃，并抛出异常
             throw new Exception("rejected .. Log count exceed log queue's max size ！");
         }
         // 将日志放入 任务队列中，放入成功返回true
-        this.queue.offer(testLogBean);
+        this.queue.offer(LogBean);
         // 队列中任务数量 +1
         logCount.incrementAndGet();
     }

@@ -4,6 +4,7 @@ import cn.hutool.setting.dialect.Props;
 import com.cmlx.thread.logtest.bean.LogCleanBean;
 import com.cmlx.thread.logtest.service.ILogCleanService;
 import com.cmlx.thread.logtest.utils.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.spi.CleanableThreadContextMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,8 @@ import java.util.concurrent.Executors;
  * @Date -> 2021/5/14 16:13
  * @Desc -> 日志清理 控制器
  **/
-@Component
+@Slf4j
+@Component("cleanManager")
 public class CleanManager {
 
     @Autowired
@@ -27,7 +29,7 @@ public class CleanManager {
 
     private static Props props = new Props("application-cleanLog.properties");
 
-    private static LogCleanBean logCleanBean;
+    private static LogCleanBean logCleanBean = new LogCleanBean();
 
     static {
         // 获取配置的线程大小
@@ -80,5 +82,17 @@ public class CleanManager {
             // 进行多线程处理
             cleanManagerThreadPool.execute(new CleanThread(this.iLogCleanService, cleanBean));
         }
+    }
+
+    /**
+     *  关闭 线程池
+     */
+    public void shutdown() {
+        log.info("CleanManager Thread Pool shutdown...");
+        /**
+         *  关闭线程池
+         *  调用了shutdownNow()方法后，线程池将不能接受新任务，也不会处理队列中的任务，并且会中断正在处理任务的线程
+         */
+        cleanManagerThreadPool.shutdownNow();
     }
 }
