@@ -1,7 +1,7 @@
-package com.cmlx.thread.spring.controller;
+package com.cmlx.thread.springserial.controller;
 
 
-import com.cmlx.thread.spring.service.IAsyncService;
+import com.cmlx.thread.springserial.service.IAsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,5 +1,7 @@
 package com.cmlx.thread.parallel.service;
 
+import java.util.concurrent.Future;
+
 /**
  * @Author CMLX
  * @Date -> 2021/5/15 17:41
@@ -7,12 +9,17 @@ package com.cmlx.thread.parallel.service;
  **/
 public interface IMainMethodService {
 
-    void add();
+    Future<String> addAsync();
+    Future<String> subAsync();
+    Future<String> mulAsync();
+    Future<String> divAsync();
 
-    void sub();
+    String add();
 
-    void mul();
+    String sub();
 
-    void div();
+    String mul();
+
+    String div();
 
 }

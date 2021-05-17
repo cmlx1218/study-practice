@@ -1,4 +1,4 @@
-package com.cmlx.thread.spring.config;
+package com.cmlx.thread.springserial.config;
 
 
 import lombok.extern.slf4j.Slf4j;

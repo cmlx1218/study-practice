@@ -1,4 +1,4 @@
-package com.cmlx.thread.spring.service;
+package com.cmlx.thread.springserial.service;
 
 public interface IAsyncService {
 
