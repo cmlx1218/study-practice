@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * @Author CMLX
  * @Date -> 2021/5/15 17:35
@@ -31,8 +33,8 @@ public class ParallelController {
 
 
     @RequestMapping("/parallel")
-    public Long testParallel() {
-
+    public Long testParallel() throws ExecutionException, InterruptedException {
+        iParallelService.testParallel();
         return 1000L;
     }
 
