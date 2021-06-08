@@ -5,13 +5,13 @@ package com.cmlx.thread.thread01;
  * @Date -> 2021/6/8 15:04
  * @Desc ->
  **/
-public class Test extends Thread{
+public class MianShi01 extends Thread{
 
     final StringBuffer sb1 = new StringBuffer();
     final StringBuffer sb2 = new StringBuffer();
 
     public static void main(String[] args) {
-        final Test h = new Test();
+        final MianShi01 h = new MianShi01();
         new Thread() {
             @Override
             public void run() {
