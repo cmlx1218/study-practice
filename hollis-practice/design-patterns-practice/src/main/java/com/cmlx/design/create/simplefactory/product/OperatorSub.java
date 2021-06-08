@@ -1,0 +1,13 @@
+package com.cmlx.design.create.simplefactory.product;
+
+/**
+ * @Author CMLX
+ * @Date -> 2021/5/19 14:47
+ * @Desc ->
+ **/
+public class OperatorSub extends Operator{
+    @Override
+    public double getResult() {
+        return getValue1() - getValue2();
+    }
+}
