@@ -3,9 +3,11 @@ package com.cmlx.thread.parallel.controller;
 import com.cmlx.thread.parallel.service.IParallelService;
 import com.cmlx.thread.parallel.service.ISerialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -36,6 +38,11 @@ public class ParallelController {
     public Long testParallel() throws ExecutionException, InterruptedException {
         iParallelService.testParallel();
         return 1000L;
+    }
+
+    @RequestMapping("/test")
+    public void test(Long[] list) {
+        System.out.println(list);
     }
 
 
