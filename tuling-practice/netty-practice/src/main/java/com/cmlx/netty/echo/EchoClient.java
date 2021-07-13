@@ -11,6 +11,9 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
 
+/**
+ * https://www.cnblogs.com/qdhxhz/p/10234908.html
+ */
 public final class EchoClient {
  
     static final String HOST = System.getProperty("host", "127.0.0.1");
@@ -28,6 +31,12 @@ public final class EchoClient {
                  @Override
                  public void initChannel(SocketChannel ch) throws Exception {
                      ChannelPipeline p = ch.pipeline();
+                     // addLast(...)   //在ChannelPipeline的末尾添加ChannelHandler
+                     // addFirst(...)   //添加ChannelHandler在ChannelPipeline的第一个位置
+                     // addBefore(...)   //在ChannelPipeline中指定的ChannelHandler名称之前添加ChannelHandler
+                     // addAfter(...)   //在ChannelPipeline中指定的ChannelHandler名称之后添加ChannelHandler
+                     // remove(...)   //删除ChannelPipeline中指定的ChannelHandler
+                     // replace(...)   //替换ChannelPipeline中指定的ChannelHandle
                 	 p.addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
                      p.addLast("decoder", new StringDecoder());
                      p.addLast("encoder", new StringEncoder());
