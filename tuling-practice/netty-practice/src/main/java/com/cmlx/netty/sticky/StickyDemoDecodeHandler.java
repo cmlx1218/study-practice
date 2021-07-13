@@ -56,6 +56,7 @@ public class StickyDemoDecodeHandler extends ChannelInboundHandlerAdapter {
 			}
 
 			for (int i = 0; i < output.size(); i++) {
+				// 调用该方法的context会从自己开始在链表中根据自己的pre指针寻找上一个注册(invoke)的handler去处理时间，顺序与fireChannelRead相反
 				ctx.fireChannelRead(output.get(i));
 			}
 		} finally {
