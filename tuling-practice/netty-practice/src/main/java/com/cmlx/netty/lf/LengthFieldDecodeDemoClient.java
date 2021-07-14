@@ -1,7 +1,6 @@
-package com.cmlx.netty.sticky;
+package com.cmlx.netty.lf;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -9,10 +8,10 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.FixedLengthFrameDecoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 
-public class StickyDemoClient {
+public class LengthFieldDecodeDemoClient {
 
     public static void main(String[] args) throws Exception {
         int port = 8080;
@@ -22,7 +21,7 @@ public class StickyDemoClient {
             } catch (NumberFormatException e) {
              }
         }
-        new StickyDemoClient().connect(port, "127.0.0.1");
+        new LengthFieldDecodeDemoClient().connect(port, "127.0.0.1");
     }
 
     public void connect(int port, String host) throws Exception {
@@ -35,18 +34,11 @@ public class StickyDemoClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            // 手动实现，定长读取
-                            ch.pipeline().addLast("framer", new StickyDemoDecodeHandler(140));
-                            // netty实现，定长读取
-                            //ch.pipeline().addLast("framer", new FixedLengthFrameDecoder(140));
-                            // 手动实现，#分割
-               			// ch.pipeline().addLast("framer", new StickyDemoDecodeHandlerV2(
-            			//		 Unpooled.wrappedBuffer(new byte[] { '#' })));
-                            // netty实现，#分割
-                		//	ch.pipeline().addLast("framer", new DelimiterBasedFrameDecoder(8192,
-                		//			Unpooled.wrappedBuffer(new byte[] { '#' })));
-                        	ch.pipeline().addLast(new StickyDemoClientHandler());
-
+                            // 包的最大长度（1024）、长度属性起始位、长度属性的长度、长度调解值(在总长被定义为包含包头长度时，修正信息长度)、跳过四个字节(跳过头部)
+                			ch.pipeline().addLast("framer", new LengthFieldBasedFrameDecoder(1024, 0, 4, 0,4));
+                			// 头部长度属性字节长度，false长度字节不算在总长度中
+                			ch.pipeline().addLast("addLength", new LengthFieldPrepender(4, false));
+                 			ch.pipeline().addLast(new LengthFieldDecodeDemoClientHandler());
                         }
                     });
 
