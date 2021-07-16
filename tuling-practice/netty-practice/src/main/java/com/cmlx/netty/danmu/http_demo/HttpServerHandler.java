@@ -28,15 +28,34 @@ import io.netty.handler.codec.http.*;
 //    }
 //}
 
+//public class HttpServerHandler extends SimpleChannelInboundHandler {
+//
+//    @Override
+//    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+//        // 获取传递过来的信息
+//
+//        FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
+//        // 写入响应头
+//        response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/html;charset=UTF-8");
+//        // 写入响应体
+//        response.content().writeBytes("丁宇杰是老色批".getBytes());
+//        ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
+//    }
+
+    // 用FullHttpRequest 将HttpRequest和body聚合
 public class HttpServerHandler extends SimpleChannelInboundHandler {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
-        // 写入响应头
-        response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/html;charset=UTF-8");
-        // 写入响应体
-        response.content().writeBytes("cmlx is a beauty girl".getBytes());
-        ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
+        // 大文件传输
+        if (msg instanceof LastHttpContent) {
+            // 获取传递过来的信息
+            FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
+            // 写入响应头
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/html;charset=UTF-8");
+            // 写入响应体
+            response.content().writeBytes("丁宇杰是老色批".getBytes());
+            ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
+        }
     }
 }
