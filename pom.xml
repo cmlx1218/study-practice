@@ -17,6 +17,7 @@
     <modules>
         <module>tuling-practice</module>
         <module>hollis-practice</module>
+        <module>demo-practice</module>
     </modules>
 
     <properties>
