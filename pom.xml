@@ -18,6 +18,7 @@
         <module>tuling-practice</module>
         <module>hollis-practice</module>
         <module>demo-practice</module>
+        <module>awaken-practice</module>
     </modules>
 
     <properties>
