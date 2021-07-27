@@ -15,7 +15,7 @@ public class ZkclientTest {
       //user.setAge(18);
       //user.setName("wukong");
       //zkClientCrud.createPersistent("/abc",user);
-      //System.out.println(zkClientCrud.readData("/abc"));;
+      //System.out.println(zkClientCrud.readData("/abc"));
 
       /****
        * 由于zkClient创建连接的时候指定了默认的序列化类-new SerializableSerializer(),
