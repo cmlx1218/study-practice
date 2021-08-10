@@ -1,6 +1,7 @@
 package com.cmlx.data.sparsearray;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -73,7 +74,7 @@ public class SparseArray {
             }
             content.append("\n");
         }
-        Files.write(path,content.toString().getBytes("UTF-8"), StandardOpenOption.APPEND,StandardOpenOption.CREATE);
+        Files.write(path,content.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND,StandardOpenOption.CREATE);
 
 
 
