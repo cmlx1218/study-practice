@@ -66,7 +66,7 @@ public class SparseArray {
         }
         // 2.4、将数组写入到文件
         System.out.println("将稀疏数组写入到文件《《《《《");
-        Path path = Paths.get("E:\\test\\data\\sparseArray\\store.txt");
+        Path path = Paths.get("D:\\test\\data\\sparseArray\\store.txt");
         StringBuilder content = new StringBuilder();
         for (int[] row : sparseArr1) {
             for (int data : row) {
@@ -81,7 +81,7 @@ public class SparseArray {
         // 3、将稀疏数组恢复成原始数组
         // 3.1、初始化原始数组
         System.out.println("从文件读出稀疏数组《《《《《");
-        List<String> list = Files.readAllLines(Paths.get("E:\\test\\data\\sparseArray\\store.txt"));
+        List<String> list = Files.readAllLines(Paths.get("D:\\test\\data\\sparseArray\\store.txt"));
         int size = list.size();
         int[][] newSparseArray = new int[size][3];
         String[] split = null;
