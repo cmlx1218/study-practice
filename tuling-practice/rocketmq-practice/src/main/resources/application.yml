@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+rocketmq:
+  name-server: 192.168.10.101:9876;192.168.10.102:9876
+  producer:
+    group: first-producer-group
+    enable: true
+
+
