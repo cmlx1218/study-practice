@@ -84,7 +84,7 @@ class ArrayCircularQueue {
         front = 0;
         rear = 0;
         this.maxSize = maxSize;
-        arr = new int[maxSize];
+        arr = new int[maxSize + 1];
     }
 
     boolean isFull() {
@@ -120,7 +120,7 @@ class ArrayCircularQueue {
             throw new RuntimeException("队列中无数据");
         }
 
-        for (int i = front; i < front + size() + 1; i++) {
+        for (int i = front; i < front + size(); i++) {
             System.out.printf("arr[%d]=%d\n", i % maxSize, arr[i % maxSize]);
         }
         //for (int i = 0; i < arr.length; i++) {
