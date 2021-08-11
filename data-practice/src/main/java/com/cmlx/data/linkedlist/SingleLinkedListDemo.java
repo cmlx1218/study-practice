@@ -46,6 +46,30 @@ class SingleLinkedList {
         temp.next = data;
     }
 
+    public void addByOrder(HeroNode data) {
+        HeroNode temp = head;
+        boolean flag = false;
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            if (temp.next.no > data.no) {
+                break;
+            }
+            if (temp.next.no.equals(data.no)) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag) {
+            System.out.println("当前插入位置有数据");
+        }
+        temp.next = data;
+        data.next = temp.next.next;
+    }
+
+
     public void list() {
         if (head.next == null) {
             System.out.println("链表中没有数据");
@@ -60,7 +84,7 @@ class SingleLinkedList {
 
 class HeroNode {
 
-    private Integer no;
+    public Integer no;
     private String name;
     private String nickName;
     public HeroNode next;
