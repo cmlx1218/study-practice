@@ -27,6 +27,6 @@ public class OperatorFactory {
         //    default:
         //        throw new UnsupportedOperationException("不支持该操作");
         //}
-        return (Operator) Class.forName("com.cmlx.design.simplefactory."+operatorStr).newInstance();
+        return (Operator) Class.forName("com.cmlx.design.create.simplefactory.product."+operatorStr).newInstance();
     }
 }
