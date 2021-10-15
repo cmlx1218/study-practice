@@ -20,10 +20,9 @@ public class TestAsyncParallelController {
     private IAsyncParallelService iAsyncService;
 
     @RequestMapping("/testAsyncParallel")
-    public Long testAsync() throws ExecutionException, InterruptedException {
+    public String testAsync() throws ExecutionException, InterruptedException {
         long startTime = System.currentTimeMillis();
-        String s = iAsyncService.testAsync();
-        return System.currentTimeMillis() - startTime;
+        return iAsyncService.testAsync();
     }
 
 }

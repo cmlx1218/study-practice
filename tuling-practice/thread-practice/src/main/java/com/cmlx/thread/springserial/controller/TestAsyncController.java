@@ -16,7 +16,7 @@ public class TestAsyncController {
     @RequestMapping("/testAsync")
     public String test(){
         iAsyncService.executeAsync();
-        return "";
+        return "嘻嘻嘻";
     }
 
 }

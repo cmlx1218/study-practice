@@ -23,9 +23,11 @@ public class SingleTonTest {
         //System.out.println(instance2 == instance3);
         //System.out.println(instance2.hashCode());
 
-        for (int i = 0; i < 10000; i++) {
-            System.out.println(i);
-        }
+        //for (int i = 0; i < 10000; i++) {
+        //    System.out.println(i);
+        //}
+
+        System.out.println(1 << 29);
 
 
     }

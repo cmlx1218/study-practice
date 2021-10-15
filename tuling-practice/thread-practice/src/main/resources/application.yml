@@ -11,9 +11,9 @@ spring:
 
   datasource:
     username: root
-    password: 123456
+    password: aimy2021!
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://39.96.178.201:3306/practice?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://14.119.109.139:18915/practice?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
     type: com.alibaba.druid.pool.DruidDataSource
   jpa:
     hibernate:
