@@ -1,5 +1,6 @@
 package com.cmlx.design.create.abstractfactory;
 
+import cn.hutool.core.codec.Base64;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
@@ -14,8 +15,11 @@ public class TestAbstractFactory {
         //BenzCar benzCar = sportCarFactory.getBenzCar();
         //benzCar.gasUp();
 
-        String nacos = new BCryptPasswordEncoder().encode("aimy2021#$&!");
-        System.out.println(nacos);
+        //String nacos = new BCryptPasswordEncoder().encode("aimy2021#$&!");
+        //System.out.println(nacos);
+
+        String encode = Base64.encode("cms:RongChuangMagic");
+        System.out.println(encode);
 
     }
 
