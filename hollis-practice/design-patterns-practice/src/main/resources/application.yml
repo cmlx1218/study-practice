@@ -4,3 +4,12 @@ server:
 spring:
   application:
     name: design-patterns-practice
+
+
+
+# jasypt加密的密匙
+jasypt:
+  encryptor:
+    password: YEUS2IONLK65FSKDF
+
+  test: ENC(Wu5RqNvZw8IsjxRU1oTJmv8TEZsv5mFb)
