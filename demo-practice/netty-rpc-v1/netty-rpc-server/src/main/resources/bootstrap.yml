@@ -1,3 +1,0 @@
-rpc:
-  service_address: 192.168.10.101:8000
-  registry_address: 192.168.10.101:2181
