@@ -19,6 +19,7 @@
         <module>hollis-practice</module>
         <module>demo-practice</module>
         <module>awaken-practice</module>
+        <module>nai-practice</module>
     </modules>
 
     <properties>
